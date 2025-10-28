@@ -1,5 +1,3 @@
-% XeLatex编辑
-
 % 定义画圈命令，用于标记主元
 \newcommand{\circlednum}[1]{%
     \tikz[baseline=(char.base)]{%
@@ -7,23 +5,12 @@
     }%
 }
 
-\begin{document}
-
-% \ucascover
-
-% % --- 目录 ---
-% % 会自动生成带“目录”标题的目录页
-% \tableofcontents
-% \newpage
-
-% % --- 正文开始 ---
-
 \section*{2. 一般线性系统与阶梯形式}
 正如我们在前一节中提到的,解线性方程组的方法是将其转化为增广矩阵,使用初等行变换将增广矩阵化简,然后解由简化矩阵表示的等价系统。这个过程如下图所示。
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=\linewidth]{f1.png} % 请根据实际情况替换图片路径
+    \includegraphics[width=\linewidth]{2.1-1.png} % 请根据实际情况替换图片路径
     \caption{解线性系统流程}
     \label{fig:linear_system_process}
 \end{figure}
@@ -345,6 +332,4 @@ Pay particular attention to the fact that the basic columns are extracted from \
 \end{enumerate}
 
 \end{enumerate}
-
-\end{document}
 
