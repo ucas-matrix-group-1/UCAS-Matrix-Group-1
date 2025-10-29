@@ -1,4 +1,4 @@
-\subsection*{2.3 线性方程组的一致性(Consistency Of Linear Systems)}
+\subsection{2.3 线性方程组的一致性(Consistency Of Linear Systems)}
 
 如果一个包含 \(n\) 个未知数的 \(m\) 个线性方程组至少有一个解，则称其为相容方程组。如果没有解，则该方程组
 被称为不相容方程组。本节旨在确定给定方程组相容的条件。
@@ -11,11 +11,11 @@
 相关的 \(m\) 个平面至少有一个公共交点。
 然而，当 \(m\) 较大时，这些几何条件可能不易直观验证，而当 \(n\) > 3 时，相交线或平面的推广则无法用肉眼直观地看到。
 
-我们不依赖几何来建立一致性，而是使用高斯消元法。如果将相关的增广矩阵 \([A|b]\) 通过行运算简化为行阶梯矩阵 \([E|c]\)，则一致性（或不一致性）变得显而易见。
-假设在将 \([A|b]\) 简化为 \([E|c]\) 的过程中，出现这样一种情况：一行中唯一的非零项出现在右侧，如下所示：
+我们不依赖几何来建立一致性，而是使用高斯消元法。如果将相关的增广矩阵 \([\mathbf{A}|\mathbf{b}]\) 通过行运算简化为行阶梯矩阵 \([\mathbf{E}|\mathbf{c}]\)，则一致性（或不一致性）变得显而易见。
+假设在将 \([\mathbf{A}|\mathbf{b}]\) 简化为 \([\mathbf{E}|\mathbf{c}]\) 的过程中，出现这样一种情况：一行中唯一的非零项出现在右侧，如下所示：
 
 \[
-\mathrm{Row}\_i \rightarrow 
+\text{Row }i \rightarrow 
 \left(\begin{array}{cccccc|c}
 * & * & * & * & * & * & * \\ 
 0 & 0 & 0 & * & * & * & * \\ 
@@ -46,26 +46,24 @@
 尽管这对于确定任何未知数的值没有任何帮助，但它仍然是一个真实的陈述，
 因此它并不表示系统存在不一致。
 
-还有一些其他方法可以表征系统的一致性（或不一致性）。其中一种方法是：如果增广矩阵 \([A|b]\) 的最后一列 \(b\) 是非基列，则最后一列不可能存在主元，因此系统是一致的，因为 (2.3.1) 的情况不会发生。
-反之，如果系统是一致的，那么 (2.3.1) 的情况在高斯消元法中永远不会发生，因此最后一列不可能是基列。换句话说，\([A|b]\) 是一致的当且仅当 \(b\) 是非基列。
+还有一些其他方法可以表征系统的一致性（或不一致性）。其中一种方法是：如果增广矩阵 \([\mathbf{A}|\mathbf{b}]\) 的最后一列 \(b\) 是非基列，则最后一列不可能存在主元，因此系统是一致的，因为 (2.3.1) 的情况不会发生。
+反之，如果系统是一致的，那么 (2.3.1) 的情况在高斯消元法中永远不会发生，因此最后一列不可能是基列。换句话说，\([\mathbf{A}|\mathbf{b}]\) 是一致的当且仅当 \(b\) 是非基列。
 
-说 b 是 \([A|b]\) 中的非基列，等同于说\([A|b]\) 中的所有基列都位于系数矩阵 A 中。由于矩阵中基列的数量就是秩，因此一致性也可以这样来描述：
-当且仅当 rank\([A|b]\) = rank\((A)\) 时，系统才是一致的。
-
-
+说 b 是 \([\mathbf{A}|\mathbf{b}]\) 中的非基列，等同于说\([\mathbf{A}|\mathbf{b}]\) 中的所有基列都位于系数矩阵 A 中。由于矩阵中基列的数量就是秩，因此一致性也可以这样来描述：
+当且仅当 rank\([\mathbf{A}|\mathbf{b}]\) = rank\((\mathbf{A})\) 时，系统才是一致的。
 
 \begin{bluebox}{线性方程组的一致性}
-满足以下任意一个条件都可以说 \([A|b]\) 是一致的：
+满足以下任意一个条件都可以说 \([\mathbf{A}|\mathbf{b}]\) 是一致的：
 \begin{itemize}
-    \item 行简化阶梯形矩阵 \([A|b]\) 中不存在形如下列的行:
+    \item 行简化阶梯形矩阵 \([\mathbf{A}|\mathbf{b}]\) 中不存在形如下列的行:
     \[
     \left(\begin{array}{cccc|c}
         0 & 0 & ... & 0 & \alpha
     \end{array}\right), \alpha \neq 0
     \]
-    \item \(b\) 是 \([A|b]\) 中的非基列。
-    \item rank\([A|b]\) = rank\((A)\)
-    \item \(b\) 是 \(A\) 的基列的一个组合。
+    \item \(\mathbf{b}\) 是 \([\mathbf{A}|\mathbf{b}]\) 中的非基列。
+    \item rank\([\mathbf{A}|\mathbf{b}]\) = rank\((\mathbf{A})\)
+    \item \(\mathbf{b}\) 是 \(\mathbf{A}\) 的基列的一个组合。
 \end{itemize}
 \end{bluebox}
 
@@ -76,14 +74,14 @@
 
 \textbf{问题}: 确定以下系统是否一致: 
 \[
-\begin{align} 
-    x_1 + x_2 + 2x_3 + 2x_4 + x_5 = 1, \\
-    2x_1 + 2x_2 + 4x_3 + 4x_4 + 3x_5 = 1, \\
-    2x_1 + 2x_2 + 4x_3 + 4x_4 + 2x_5 = 2, \\
-    3x_1 + 5x_2 + 8x_3 + 6x_4 + 5x_5 = 3.
-\end{align}
+\begin{aligned} 
+    x_1 + x_2 + 2x_3 + 2x_4 + x_5 &= 1, \\
+    2x_1 + 2x_2 + 4x_3 + 4x_4 + 3x_5 &= 1, \\
+    2x_1 + 2x_2 + 4x_3 + 4x_4 + 2x_5 &= 2, \\
+    3x_1 + 5x_2 + 8x_3 + 6x_4 + 5x_5 &= 3.
+\end{aligned}
 \]
-\textbf{解答}: 对增广矩阵 \([A|b]\) 应用高斯消元法，如下所示
+\textbf{解答}: 对增广矩阵 \([\mathbf{A}|\mathbf{b}]\) 应用高斯消元法，如下所示
 \[
 \left(\begin{array}{ccccc|c} 
 \circlednum{1} & 1 & 2 & 2 & 1 & 1 \\ 
@@ -107,11 +105,10 @@
 \end{array}\right)
 \]
 
-由于形式为 \left(\begin{array}{cccc|c} 0 & 0 & ... & 0 & \alpha \end{array}\right), 
-\(\alpha \neq 0\) 的行从未出现，
-因此系统是一致的。我们还可以观察到，\(b\) 是 \([A|b]\) 中的非基本列，
-因此 rank\([A|b]\) = rank \((A)\)。最后，通过将 \(A\) 完全约化为
-\(E_A\)，可以验证 \(b\) 确实是基本列的组合，\{\(A_{*1}, A_{*2}, A_{*5}\)\}。
+由于形式为 \(\left(\begin{array}{cccc|c} 0 & 0 & \dots & 0 & \alpha \end{array}\right),\ \alpha \neq 0\) 的行从未出现，
+因此系统是一致的。我们还可以观察到，\(b\) 是 \([\mathbf{A}|\mathbf{b}]\) 中的非基本列，
+因此 rank\([\mathbf{A}|\mathbf{b}]\) = rank \((\mathbf{A})\)。最后，通过将 \(\mathbf{A}\) 完全约化为
+\(\mathbf{E_A}\)，可以验证 \(\mathbf{b}\) 确实是基本列的组合，\{\(\mathbf{A_{*1}}, \mathbf{A_{*2}}, \mathbf{A_{*5}}\)\}。
 
 % 红色文字
 \textcolor{red}{练习 2.3}
@@ -164,9 +161,9 @@
     \end{array}\)
 \end{enumerate}
 
-\item Construct a \(3 \times 4\) matrix \(A\) and \(3 \times 1\) columns \(b\) and \(c\) such that \([A|b]\) is the augmented matrix for an inconsistent system, but \([A|c]\) is the augmented matrix for a consistent system.
+\item Construct a \(3 \times 4\) matrix \(A\) and \(3 \times 1\) columns \(b\) and \(c\) such that \([\mathbf{A}|\mathbf{b}]\) is the augmented matrix for an inconsistent system, but \([\mathbf{A}|\mathbf{c}]\) is the augmented matrix for a consistent system.
 
-\item If \(A\) is an \(m \times n\) matrix with rank\((A) = m\), explain why the system \([A|b]\) must be consistent for every right-hand side \(b\).
+\item If \(\mathbf{A}\) is an \(m \times n\) matrix with rank\((\mathbf{A}) = m\), explain why the system \([\mathbf{A}|\mathbf{b}]\) must be consistent for every right-hand side \(\mathbf{b}\).
 
 \item Is it possible for a parabola whose equation has the form \(y = \alpha+\beta x+\gamma x^2\) to pass through the four points (0, 1), (1, 3), (2, 15), and (3, 37)? Why?
 
@@ -189,12 +186,12 @@ One pound of brand \(\mathcal{X}\) contains 2 units of phosphorous, 3 units of p
 3 units of potassium, and 4 units of nitrogen. One pound of brand \(\mathcal{Z}\) contains only 1 unit of phosphorous and 1 unit of nitrogen.
 Determine whether or not it is possible to meet exactly the recommendation by applying some combination of the three brands of fertilizer.
 
-\item Suppose that an augmented matrix \([A|b]\) is reduced by means of Gaussian elimination to a row echelon form \([E|c]\). If a row of the form 
+\item Suppose that an augmented matrix \([\mathbf{A}|\mathbf{b}]\) is reduced by means of Gaussian elimination to a row echelon form \([\mathbf{E}|\mathbf{c}]\). If a row of the form 
 \[
 \left(\begin{array}{cccc|c}
     0 & 0 & ... & 0 & \alpha
 \end{array}\right), \alpha \neq 0
 \]
-does not appear in \([E|c]\), is it possible that rows of this form could have appeared at earlier stages in the reduction process? Why?
+does not appear in \([\mathbf{E}|\mathbf{c}]\), is it possible that rows of this form could have appeared at earlier stages in the reduction process? Why?
 
 \end{enumerate}
