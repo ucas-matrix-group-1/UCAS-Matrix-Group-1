@@ -1,7 +1,32 @@
+矩阵方法是数据科学、人工智能、大数据、机器学习等领域的核心基础，更是众多技术学科不可或缺的数学工具。从数学本质来看，矩阵的引入最初是为解决线性方程组问题，如今已发展为兼具基础性与实用性的核心数学工具。它不仅包含转置、内积、外积、逆矩阵、广义逆矩阵等基本运算，还涵盖行列式、范数、迹、秩等重要标量函数。本章将系统介绍矩阵与线性方程组的核心知识，为后续章节深入探讨矩阵分析及各类应用筑牢基础。
+
 \subsection{线性方程组}
 
-\subsubsection{高斯消元法和矩阵}
+$\text{设有 n 个未知数 }m\text{ 个方程的线性方程组}$
+\[\begin{cases}a_{11}x_{1}+a_{12}x_{2}+\cdots+a_{1n}x_{n}=b_{1},\\a_{21}x_{1}+a_{22}x_{2}+\cdots+a_{2n}x_{n}=b_{2},\\\cdots\cdots\cdots\cdots\\a_{m1}x_{1}+a_{m2}x_{2}+\cdots+a_{mn}x_{n}=b_{m},&\end{cases} (1)\]
+其中$a_{ij}$是第$i$个方程的第$j$个未知数的系数，$b_i$是第$i$个方程的常数项$,i=1,2,\cdots,m;$ $j=1,2,\cdots,n$,当常数项$b_{1},b_{2},\cdots,b_{m}$不全为零时，线性方程组(1)叫做$n$元非齐次线性方程组，当$b_1,b_2,\cdots,b_m$ 全为零时，(1)式成为
+\[\begin{cases}a_{11}x_{1}+a_{12}x_{2}+\cdots+a_{1n}x_{n}=0,\\a_{21}x_{1}+a_{22}x_{2}+\cdots+a_{2n}x_{n}=0,\\\cdots\cdots\cdots\cdots\\a_{m1}x_{1}+a_{m2}x_{2}+\cdots+a_{mn}x_{n}=0,&\end{cases}(2)\]
+叫做$n$元齐次线性方程组
 
-\subsubsection{高斯-约当消元法}
+$n$ 元线性方程组往往简称为线性方程组或方程组.
 
-\subsubsection{MAKING GAUSSIAN ELIMINATION WORK}
+对于$n$元齐次线性方程组$(2),x_1=x_2=\cdots=x_n=0$一定是它的解，这个解叫做齐次线性方程组(2)的零解.如果一组不全为零的数是(2)的解，则它叫做齐次线性方程组(2)的非零解.齐次线性方程组(2)一定有零解，但不一定有非零解.
+
+例如
+$$(1)\begin{cases}x-y=0,\\x+y=2;&\end{cases}(2)\begin{cases}x-y=0,\\x+y=1,\\x+y=2;&\end{cases}(3)\begin{cases}x_1-x_2=0,\\2x_1-2x_2=0,\\3x_1-3x_2=0&\end{cases}$$
+
+就是三个二元线性方程组，并且(3)是齐次方程组。
+
+下面讨论这三个方程组的解.方程组$\textcircled{1}:$易知其有惟一解 $x=y=1;$方程组$\textcircled{2}:$显然不存在数$x$ 和 $y$ 使 $x+y=1$ 和 $x+y=2$ 同时成立，故方程组$\textcircled{2}$无解；方程组$\textcircled{3}:设s$ 为任一数， 那么 $x_1=x_2=s$ 是$\textcircled{3}$的解，从而方程组$\textcircled{3}$有无限多个解.
+
+这样看来，对于线性方程组需要讨论以下问题：(1)它是否有解？(2)在有解时它的解是否惟一？(3)如果有多个解，如何求出它的所有解？
+
+对于线性方程组(1),上述诸问题的答案完全取决于它的$mn$个系数$a_{ij}\left(i=1,2,\cdots,\right.$$m;j=1,2,\cdots,n$)和右端的常数项$b_1,b_2,\cdotp\cdotp\cdotp,b_m$所构成的$m$行$n+1$列的矩形数表
+
+\[\begin{array}{cccc}a_{11}&a_{12}&\cdots&a_{1n}\\a_{21}&a_{22}&\cdots&a_{2n}\\\vdots&\vdots&&\vdots\\a_{m1}&a_{m2}&\cdots&a_{mn}\end{array}\begin{array}{c}b_1\\b_2\\\vdots\\b_m\end{array}\]
+
+这里横排称为行，竖排称为列；而对于齐次线性方程组(2)的相应问题的答案也完全取决于它的$mn$个系数$a_ij$ $(i=1,2,\cdots,m;j=1,2,\cdots,n)$所构成的$m$行$n$列的矩形数表
+
+\[\begin{array}{cccc}a_{11}&a_{12}&\cdots&a_{1n}\\a_{21}&a_{22}&\cdots&a_{2n}\\\vdots&\vdots&\vdots&\vdots\\a_{m1}&a_{m2}&\cdots&a_{mn}\end{array}\]
+
+$\text{由此我们引人矩阵的概念}.$

@@ -1,0 +1,166 @@
+\subsection{高斯-乔丹法}
+本节的目的是介绍高斯消元法的一种变体，即\textbf{高斯-乔丹法}。
+\footnote{尽管对于哪位Jordan应因该算法获得赞誉存在一些混淆，但现在看来很清楚，该方法实际上是由名为威廉·乔丹（WilhelmJordan，1842-1899）的大地测量学家提出的，而非更为人熟知的数学家玛丽·恩内蒙德·卡米尔·乔丹（Marie Ennemond Camille Jordan，1838-1922）。后者的名字常被错误地与该技术联系在一起，但他在矩阵分析的其他重要领域确实值得赞誉，其中最著名的是“乔丹标准型”。
+	
+威廉·乔丹出生于德国南部，在斯图加特接受教育，是卡尔斯鲁厄工学院的大地测量学教授。他是一位多产的作家，于1888年出版的《测量学手册》（Handbuch der Vermessungskunde）中介绍了他的消元方法。有趣的是，一种与W. 乔丹的高斯消元变体相似的方法，似乎被一位名叫克拉森（Clasen）的不知名法国人独立发现并描述。他似乎只发表过一篇科学文章，发表于1888年——与W. 乔丹的《手册》同年出版。}
+高斯-乔丹法与标准高斯消元法的两个区别如下：
+
+- 每一步都将主元强制化为1。
+
+- 每一步都消去主元上方和下方的所有项。
+
+换句话说，若线性系统的增广矩阵为
+\[
+\begin{pmatrix}
+	a_{11} & a_{12} & \cdots & a_{1n} & \big| & b_1 \\
+	a_{21} & a_{22} & \cdots & a_{2n} & \big| & b_2 \\
+	\vdots & \vdots & \ddots & \vdots & \big| & \vdots \\
+	a_{n1} & a_{n2} & \cdots & a_{nn} & \big| & b_n
+\end{pmatrix}
+\]
+则通过初等行变换将其约化为
+\[
+\begin{pmatrix}
+	1 & 0 & \cdots & 0 & \big| & s_1 \\
+	0 & 1 & \cdots & 0 & \big| & s_2 \\
+	\vdots & \vdots & \ddots & \vdots & \big| & \vdots \\
+	0 & 0 & \cdots & 1 & \big| & s_n
+\end{pmatrix}.
+\]
+
+此时解直接出现在最后一列（即\( x_i = s_i \)），因此该过程无需执行回代。
+
+% 红色文字
+\textcolor{red}{例子1.3.1}
+% 红色水平线（宽度为文本宽度，厚度0.4pt）
+\color{red}\rule{\textwidth}{0.4pt}\color{black}
+
+问题：用高斯-乔丹法解下列方程组：
+\[
+\begin{cases}
+	2x_1 + 2x_2 + 6x_3 = 4, \\
+	2x_1 + x_2 + 7x_3 = 6, \\
+	-2x_1 - 6x_2 - 7x_3 = -1.
+\end{cases}
+\]
+
+解：操作序列在括号中注明，主元用圆圈标出。
+
+\[
+\begin{pmatrix}
+	\boxed{2} & 2 & 6 & \big| & 4 \\
+	2 & 1 & 7 & \big| & 6 \\
+	-2 & -6 & -7 & \big| & -1
+\end{pmatrix}
+\xrightarrow{R_1/2}
+\begin{pmatrix}
+	\boxed{1} & 1 & 3 & \big| & 2 \\
+	2 & 1 & 7 & \big| & 6 \\
+	-2 & -6 & -7 & \big| & -1
+\end{pmatrix}
+\xrightarrow{\substack{R_2 - 2R_1 \\ R_3 + 2R_1}}
+\]
+
+\[
+\rightarrow
+\begin{pmatrix}
+	\boxed{1} & 1 & 3 & \big| & 2 \\
+	0 & -1 & 1 & \big| & 2 \\
+	0 & -4 & -1 & \big| & 3
+\end{pmatrix}
+\xrightarrow{(-R_2)}
+\begin{pmatrix}
+	1 & 1 & 3 & \big| & 2 \\
+	0 & \boxed{1} & -1 & \big| & -2 \\
+	0 & -4 & -1 & \big| & 3
+\end{pmatrix}
+\xrightarrow{\substack{R_1 - R_2 \\ R_3 + 4R_2}}
+\]
+
+\[
+\rightarrow
+\begin{pmatrix}
+	1 & 0 & 4 & \big| & 4 \\
+	0 & \boxed{1} & -1 & \big| & -2 \\
+	0 & 0 & -5 & \big| & -5
+\end{pmatrix}
+\xrightarrow{-R_3/5}
+\begin{pmatrix}
+	1 & 0 & 4 & \big| & 4 \\
+	0 & 1 & -1 & \big| & -2 \\
+	0 & 0 & \boxed{1} & \big| & 1
+\end{pmatrix}
+\xrightarrow{\substack{R_1 - 4R_3 \\ R_2 + R_3}}
+\]
+
+\[
+\rightarrow
+\begin{pmatrix}
+	1 & 0 & 0 & \big| & 0 \\
+	0 & 1 & 0 & \big| & -1 \\
+	0 & 0 & \boxed{1} & \big| & 1
+\end{pmatrix}
+\]
+
+因此，解为 \(\begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} = \begin{pmatrix} 0 \\ -1 \\ 1 \end{pmatrix}\)。
+
+% 红色水平线（宽度为文本宽度，厚度0.4pt）
+\color{red}\rule{\textwidth}{0.4pt}\color{black}
+
+
+从表面上看，高斯-乔丹消元法（Gauss-Jordan）和高斯消元法配合回代（Gaussian elimination with back substitution）似乎差别不大，因为在高斯-乔丹消元中，消去主元上方的项看起来就相当于进行回代。但这种观点是不正确的。高斯-乔丹消元法所需的运算量比带回代的高斯消元法更多。
+
+\begin{bluebox}{高斯-乔丹法运算次数}
+	对于 \( n \times n \) 系统，高斯-乔丹过程需要
+	\[
+	\frac{n^3}{2} + \frac{n^2}{2} \quad \text{次乘法/除法}
+	\]
+	以及
+	\[
+	\frac{n^3}{2} - \frac{n}{2} \quad \text{次加法/减法}.
+	\]
+	换句话说，高斯-乔丹法需要大约 \( n^3/2 \) 次乘法/除法，且加法/减法的次数也大致相同。
+\end{bluebox}
+
+回顾上一节，带回代的高斯消元法仅需要大约 \( \frac{n^3}{3} \) 次乘法/除法，且加法/减法的次数也大致相同。将其与高斯-乔丹法所需的 \( \frac{n^3}{2} \) 量级进行比较，可见高斯-乔丹法的运算量比带回代的高斯消元法大约多50\%。对于教材中常见的小型系统（例如 \( n = 3 \)），这种比较看不出明显差异。然而，在实际应用中，遇到的系统可能非常大，此时高斯-乔丹法与带回代的高斯消元法之间的差异会很显著。例如，若 \( n = 100 \)，则 \( \frac{n^3}{3} \) 约为333,333，而 \( \frac{n^3}{2} \) 为500,000，两者在乘法/除法和加法/减法的次数上都相差166,667次。
+
+尽管高斯-乔丹法不建议用于求解实际应用中出现的线性系统，但它确实有一些理论优势。此外，除了求解线性系统的解之外，它在其他任务中也可能是一种有用的技术。我们在讨论矩阵求逆时会用到高斯-乔丹过程——这是引入高斯-乔丹法的主要原因。
+
+% 红色文字
+\textcolor{red}{练习1.3}
+% 红色水平线（宽度为文本宽度，厚度0.4pt）
+\color{red}\rule{\textwidth}{0.4pt}\color{black}
+
+\subsubsection{用高斯-乔丹法解下列方程组：}
+\[
+\begin{cases}
+	4x_2 - 3x_3 = 3, \\
+	-x_1 + 7x_2 - 5x_3 = 4, \\
+	-x_1 + 8x_2 - 6x_3 = 5.
+\end{cases}
+\]
+
+\subsubsection{用高斯-乔丹法解下列方程组：}
+\[
+\begin{cases}
+	x_1 + x_2 + x_3 + x_4 = 1, \\
+	x_1 + 2x_2 + 2x_3 + 2x_4 = 0, \\
+	x_1 + 2x_2 + 3x_3 + 3x_4 = 0, \\
+	x_1 + 2x_2 + 3x_3 + 4x_4 = 0.
+\end{cases}
+\]
+
+\subsubsection{用高斯-乔丹法同时解下列三个方程组：}
+\[
+\begin{cases}
+	2x_1 - x_2 = 1 \big| 0 \big| 0, \\
+	-x_1 + 2x_2 - x_3 = 0 \big| 1 \big| 0, \\
+	-x_2 + x_3 = 0 \big| 0 \big| 1.
+\end{cases}
+\]
+
+\subsubsection{验证文中给出的高斯-乔丹法的运算次数对一般3×3系统是正确的。如果有挑战欲，尝试对一般\( n \times n \)系统验证这些次数。}
+
+
+
+
