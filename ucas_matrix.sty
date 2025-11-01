@@ -167,6 +167,11 @@
     % 封面后新页
     \newpage
 }
-
+% 定义画圈命令，用于标记主元
+\newcommand{\circlednum}[1]{%
+    \tikz[baseline=(char.base)]{%
+        \node[draw, circle, inner sep=1pt] (char) {#1};%
+    }%
+}
 
 \endinput

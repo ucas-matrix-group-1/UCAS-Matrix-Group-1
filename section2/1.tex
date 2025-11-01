@@ -1,9 +1,4 @@
-% 定义画圈命令，用于标记主元
-\newcommand{\circlednum}[1]{%
-    \tikz[baseline=(char.base)]{%
-        \node[draw, circle, inner sep=1pt] (char) {#1};%
-    }%
-}
+
 
 \section{一般线性系统与阶梯形式}
 正如我们在前一节中提到的,解线性方程组的方法是将其转化为增广矩阵,使用初等行变换将增广矩阵化简,然后解由简化矩阵表示的等价系统。这个过程如下图所示。
