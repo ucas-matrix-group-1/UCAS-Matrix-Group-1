@@ -241,7 +241,7 @@ x_4\left(\begin{array}{c}
 \end{array}\right) = \mathbf{E}
 \]
 表明 rank(\(\mathbf{A}\)) = 2 < \(n\) = 3。由于基本列位于位置1 和 2，\(x_1\) 和 \(x_2\) 是基本变量，而 \(x_3\) 是自由变量。使用
-\([E|0]\) 的反向代入，用自由变量来求解基本变量，可得 \(x_2 = -3x_3\) 和 \(x_1 = -2x_2 - 2x_3 = 4x_3\)，因此通解为
+\([\mathbf{E|0}]\) 的反向代入，用自由变量来求解基本变量，可得 \(x_2 = -3x_3\) 和 \(x_1 = -2x_2 - 2x_3 = 4x_3\)，因此通解为
 \[
 \left(\begin{array}{c}
     x_1 \\
@@ -279,38 +279,46 @@ x_4\left(\begin{array}{c}
 
 \begin{enumerate}[leftmargin=*, label=\bfseries 2.4.\arabic*]
 
-\item Determine the general solution for each of the following homogeneous systems.
+\item 求下列各齐次系统的通解。
 
-\begin{enumerate}[label=(\alph*)]
-    \item \(\begin{array}{l}
+\begin{tabular}{@{}p{0.4\textwidth} p{0.4\textwidth}@{}}
+\begin{tabular}{@{} >{\raggedleft\arraybackslash}m{0.1em}@{\hspace{0.1em}} m{\dimexpr\linewidth-0.1em-0.1em\relax} @{} }
+	{(a)} & \[\begin{aligned}
     x_1 + 2x_2 + x_3 + 2x_4 = 0, \\
     2x_1 + 4x_2 + x_3 + 3x_4 = 0, \\
     3x_1 + 6x_2 + x_3 + 4x_4 = 0.
-    \end{array}\)
-    
-    \item \(\begin{array}{l}
+\end{aligned}\]
+\end{tabular}
+&
+\begin{tabular}{@{} >{\raggedleft\arraybackslash}m{0.1em}@{\hspace{0.1em}} m{\dimexpr\linewidth-0.1em-0.1em\relax} @{} }
+	{(b)} & \[\begin{aligned}
     2x + y + z = 0, \\
     4x + 2y + z = 0, \\
     6x + 3y + z = 0, \\
     8x + 4y + z = 0.
-    \end{array}\)
-    
-    \item \(\begin{array}{l}
+\end{aligned}\]
+\end{tabular}
+\\
+\begin{tabular}{@{} >{\raggedleft\arraybackslash}m{0.1em}@{\hspace{0.1em}} m{\dimexpr\linewidth-0.1em-0.1em\relax} @{} }
+	{(c)} & \[\begin{aligned}
     x_1 + x_2 + 2x_3 = 0, \\
     3x_1 + 3x_3 + 3x_4 = 0, \\
     2x_1 + x_2 + 3x_3 + x_4 = 0. \\
     x_1 + 2x_2 + 3x_3 - x_4 = 0,
-    \end{array}\)
-
-    \item \(\begin{array}{l}
+\end{aligned}\]
+\end{tabular}
+&
+\begin{tabular}{@{} >{\raggedleft\arraybackslash}m{0.1em}@{\hspace{0.1em}} m{\dimexpr\linewidth-0.1em-0.1em\relax} @{} }
+	{(d)} & \[\begin{aligned}
     2x + y + z = 0, \\
     4x + 2y + z = 0, \\
     6x + 3y + z = 0, \\
     8x + 5y + z = 0.
-    \end{array}\)
-\end{enumerate}
+\end{aligned}\]
+\end{tabular}
+\end{tabular}
 
-\item Among all solutions that satisfy the homogeneous system
+\item 在所有满足齐次方程组的解中
 \[
 \begin{aligned}
 x + 2y + z &= 0, \\
@@ -318,9 +326,9 @@ x + 2y + z &= 0, \\
 x + 2y - z &=0.
 \end{aligned}
 \]
-determine those that also satisfy the nonlinear constraint \(y - xy = 2z\).
+确定哪些也满足非线性约束 \(y - xy = 2z\)。
 
-\item Consider a homogeneous system whose coefficient matrix is
+\item 考虑一个齐次系统，其系数矩阵为
 \[
 \mathbf{A} = \left(\begin{array}{ccccc}
     1 & 2 & 1 & 3 & 1 \\
@@ -330,21 +338,19 @@ determine those that also satisfy the nonlinear constraint \(y - xy = 2z\).
     3 & 6 & 1 & 7 & -3
 \end{array}\right).
 \]
-First transform \(\mathbf{A}\) to an unreduced row echelon form to determine the
-general solution of the associated homogeneous system. Then reduce \(\mathbf{A}\)
-to \(\mathbf{E_A}\), and show that the same general solution is produced.
+首先将 \(\mathbf{A}\) 变换为未简化的行阶梯形矩阵，以确定相关齐次方程组的通解。然后，将 \(\mathbf{A}\) 简化为 \(\mathbf{E_A}\)，并证明可以得到相同的通解。
 
-\item If \(\mathbf{A}\) is the coefficient matrix for a homogeneous system consisting of four equations in eight unknowns and if there are five free variables, what is rank(\(\mathbf{A}\))?
+\item 如果 \(\mathbf{A}\) 是一个由四个方程和八个未知数组成的齐次系统的系数矩阵，并且有五个自由变量，那么 rank(\(\mathbf{A}\)) 是多少?
 
-\item Suppose that \(\mathbf{A}\) is the coefficient matrix for a homogeneous system of four equations in six unknowns and suppose that \(\mathbf{A}\) has at least one nonzero row.
+\item 假设 \(\mathbf{A}\) 是一个包含六个未知数的四个方程的齐次系统的系数矩阵，并且假设 \(\mathbf{A}\) 至少有一行非零。
 \begin{enumerate}[label=(\alph*)]
-    \item Determine the fewest number of free variables that are possible.
-    \item Determine the maximum number of free variables that are possible.
+    \item 确定自由变量的最小数量。
+    \item 确定自由变量的最大数量。
 \end{enumerate}
 
-\item Explain why a homogeneous system of \(m\) equations in \(n\) unknowns where \(m < n\) must always possess an infinite number of solutions.
+\item 解释为什么对于 \(n\) 个未知数且 \(m < n\) 的 \(m\) 个方程的齐次方程组，一定有无穷多个解。
 
-\item Construct a homogeneous system of three equations in four unknowns that has
+\item 构造一个包含四个未知数的三方程齐次方程组，该方程组满足以下条件：
 \[
 x_2\left(\begin{array}{c}
     -2 \\
@@ -359,8 +365,8 @@ x_4\left(\begin{array}{c}
     1
 \end{array}\right)
 \]
-as its general solution.
+作为其一般解。
 
-\item If \(\mathbf{c}_1\) and \(\mathbf{c}_2\) are columns that represent two particular solutions of the same homogeneous system, explain why the sum \(\mathbf{c}_1 + \mathbf{c}_2\) must also represent a solution of this system.
+\item 如果 \(\mathbf{c}_1\) 和 \(\mathbf{c}_2\) 是表示同一齐次方程组的两个特解的列，请解释为什么 \(\mathbf{c}_1 + \mathbf{c}_2\) 也必须表示该方程组的一个解。
 
 \end{enumerate}
