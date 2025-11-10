@@ -9,16 +9,18 @@
 
 \ucascover
 
+\pagenumbering{roman}
+\setcounter{page}{1}
 % --- 目录 ---
 % 会自动生成带“目录”标题的目录页
 \tableofcontents
 \newpage
 
 % --- 正文开始 ---
-
+\pagenumbering{arabic}
+\setcounter{page}{1}
 \section{矩阵与线性方程组}
-
-\include{section1/1}
+\input{section1/1}
 \include{section1/2}
 \include{section1/3}
 \include{section1/4}
@@ -27,7 +29,7 @@
 
 \section{矩阵系统与阶梯形}
 
-\include{section2/1}
+\input{section2/1}
 \include{section2/2}
 \include{section2/3}
 \include{section2/4}
